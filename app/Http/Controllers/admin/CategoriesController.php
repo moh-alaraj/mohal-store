@@ -176,7 +176,7 @@ class CategoriesController extends Controller
             'description' =>  'nullable|min:5|max:20',
             'parent_id'   =>  'nullable|exists:categories,id',
             'status'      =>  'required|in:active,inactive',
-            'image'       =>  'nullable|min:1024|image',
+            'image'       =>  'nullable|image',
         ]);
 
     }

@@ -9,13 +9,6 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-//    public function index(){
-//
-//        return view('website.show',[
-//            'categories' => Category::all(),
-//
-//        ]);
-//    }
 
     public function show($slug){
 

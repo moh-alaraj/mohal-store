@@ -81,7 +81,7 @@
 
             </tbody>
         </table>
-        {{ $products->links() }}
+        {{ $products->links('vendor.pagination.bootstrap-4')}}
     </div>
     </body>
     </html>

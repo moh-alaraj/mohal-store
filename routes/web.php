@@ -42,6 +42,9 @@ Route::post('checkout',[CheckoutController::class,'store']);
             Route::resource('products', 'ProductsController');
             Route::resource('categories', 'CategoriesController');
             Route::resource('roles', 'RolesController');
+            Route::resource('advertise', 'AdvertisesController');
+
+
 
         });
 

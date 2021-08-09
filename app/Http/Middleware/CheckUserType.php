@@ -23,6 +23,6 @@ class CheckUserType
              abort(403,'you are not Admin');
         }
 
-        return $next($request);
+            return $next($request);
     }
 }

@@ -99,6 +99,18 @@ class ProductsController extends Controller
         $product = Product::create($data);
 
         $product->tags()->attach($this->getTags($request));
+        if ($request->hasFile('gallery')){
+
+            foreach ($request->file('gallery') as $file){
+
+                $image_path = $file->move(public_path('images'), str_replace(' ', '', $file->getClientOriginalName()));
+                $data['gallery'] = $image_path->getBasename();
+                $product->images()->create([
+                    'image_path' => $data['gallery'] ,
+                ]);
+
+            }
+        }
 
 
         return redirect()->route('admin.products.index')

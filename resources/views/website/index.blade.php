@@ -94,9 +94,11 @@
             </div>
         </div>
     </div>
+
     <div class="ps-section--offer">
-        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{asset('website/images/banner/home-banner-1.png')}}" alt=""></a></div>
-        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{asset('website/images/banner/home-banner-2.png')}}" alt=""></a></div>
+        @foreach($ads as $ad)
+        <div class="ps-column"><a class="ps-offer" href="product-listing.html"><img src="{{$ad->image_link}}" alt=""></a></div>
+        @endforeach
     </div>
     <div class="ps-section--sale-off ps-section pt-80 pb-40">
         <div class="ps-container">
