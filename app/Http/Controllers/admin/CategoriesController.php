@@ -105,10 +105,8 @@ class CategoriesController extends Controller
         $cat->parent_id = $request->parent_id;
         $cat->save();
 
-        session()->put('status', 'Category added (from status!)');
-        session()->flash('success', 'Category added!');
 
-        return redirect(route('admin.categories.index'));
+        return redirect(route('admin.categories.index'))->with('success','Category added!');
     }
 
     public function update(Request $request, $id)
