@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
+use App\Notifications\NewOrderCreatedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -16,18 +18,23 @@ use Psy\Exception\ThrowUpException;
 
 class CheckoutController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $cart = Cart::with('product')
             ->where('cart_id',App::make('cart.id'))
             ->get();
 
         $total = $cart->sum(function ($item){
-            return $item->product->price * $item->quantity;
+            return $item->product->sale_price * $item->quantity;
         });
+        $order = Order::all();
+
+
         return view('website.checkout',[
             'categories' => Category::all(),
+            'carts' => Cart::limit(5)->get(),
             'cart' => $cart,
             'total' => $total,
+            'order' => $order,
         ]);
 
     }
@@ -46,7 +53,7 @@ class CheckoutController extends Controller
             return redirect('/');
         }
         $total = $cart->sum(function ($item){
-            return $item->product->price * $item->quantity;
+            return $item->product->sale_price * $item->quantity;
         });
 
         DB::beginTransaction();
@@ -67,12 +74,20 @@ class CheckoutController extends Controller
             $order->items()->create([
                'product_id' => $item->product_id,
                'quantity' => $item->quantity,
-               'price' =>  $item->product->price,
+               'price' =>  $item->product->sale_price,
             ]);
+
+            Product::where('id', $item->product_id)->increment('sales', $item->quantity);
         }
-            Cart::where('cart_id',App::make('cart.id'))->delete();
             DB::commit();
-            return redirect('/checkout')->with('status','order placed successfully');
+
+            $user = User::where('type', '=' , 'admin')->first();
+            $user->notify(new NewOrderCreatedNotification($order));
+            if ($request->payment == 'paypal'){
+            return redirect("/payments/$order->id");
+            }else{
+                return redirect("/pay/$order->id");
+            }
         }catch (\Throwable $ex){
             DB::rollBack();
             return redirect()

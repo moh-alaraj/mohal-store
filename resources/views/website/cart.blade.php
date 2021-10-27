@@ -22,7 +22,7 @@
                             <td>
                                 <a class="ps-product__preview" href="{{route('website.show',$item->product->slug)}}">
                                     <img width="60" class="mr-15" src="{{$item->product->image_link}}" alt=""> {{$item->product->name}}</a></td>
-                            <td>{{$item->product->price}} $</td>
+                            <td>{{$item->product->sale_price}} $</td>
                             <td>
                                 <div class="form-group--number">
                                     <button class="minus"><span>-</span> </button>
@@ -30,7 +30,7 @@
                                     <button class="plus"><span>+</span></button>
                                 </div>
                             </td>
-                            <td>{{$item->product->price * $item->quantity}} $</td>
+                            <td>{{$item->product->sale_price * $item->quantity}} $</td>
                             <td>
                                 <div class="ps-remove"></div>
                             </td>

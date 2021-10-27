@@ -24,10 +24,10 @@
 
         <form action="{{ URL::current() }}" method="get" class="d-flex mb-4">
             <input type="text" name="name" class="form-control me-2" placeholder="Search by name">
-            <select name="parent_id" class="form-control me-2">
-                <option value="">All Products</option>
-                @foreach ($products as $product)
-                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+            <select name="category_id" class="form-control me-2">
+                <option value="">All Categories</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
             <button type="submit" class="btn btn-secondary">Filter</button>

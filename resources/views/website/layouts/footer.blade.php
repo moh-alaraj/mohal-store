@@ -6,7 +6,8 @@
                 <h3><i class="fa fa-envelope"></i>Sign up to Newsletter</h3>
             </div>
             <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12 ">
-                <form class="ps-subscribe__form" action="do_action" method="post">
+                <form class="ps-subscribe__form" action="{{route('website.register')}}" method="post">
+                    @csrf
                     <input class="form-control" type="text" placeholder="">
                     <button>Sign up now</button>
                 </form>

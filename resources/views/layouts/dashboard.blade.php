@@ -39,10 +39,14 @@
                 <ul class="nav nav-pills flex-column " >
 
                     <li class="nav-item"><a href="" class="nav-link ">Dashboard</a></li>
+                    <li class="nav-item"><a href="{{route('admin.stores.index')}}" class="nav-link @if(request()->routeIs('admin.stores.index')) active @endif ">Stores</a></li>
                     <li class="nav-item"><a href="{{route('admin.categories.index')}}" class="nav-link @if(request()->routeIs('admin.categories.index')) active @endif">Categories</a></li>
                     <li class="nav-item"><a href="{{route('admin.products.index')}}" class="nav-link @if(request()->routeIs('admin.products.index')) active @endif ">Products</a></li>
                     <li class="nav-item"><a href="{{route('admin.roles.index')}}" class="nav-link @if(request()->routeIs('admin.roles.index')) active @endif ">Roles</a></li>
                     <li class="nav-item"><a href="{{route('admin.advertise.index')}}" class="nav-link @if(request()->routeIs('admin.advertise.index')) active @endif ">Advertisings</a></li>
+                    <li class="nav-item"><a href="{{route('admin.notifications')}}" class="nav-link @if(request()->routeIs('admin.notifications')) active @endif ">Notifications</a></li>
+                    <li class="nav-item"><a href="{{route('admin.orders')}}" class="nav-link @if(request()->routeIs('admin.orders')) active @endif ">Orders</a></li>
+
 
 
                 </ul>

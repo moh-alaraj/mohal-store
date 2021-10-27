@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Third Party Services
+    | Third Party services
     |--------------------------------------------------------------------------
     |
     | This file is for storing the credentials for third party services such
@@ -29,5 +29,16 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'paypal' => [
+        'client_id' => env('PAYPAL_CLIENT_ID'),
+        'client_secret' => env('PAYPAL_CLIENT_SECRET'),
+    ],
+    'fatoorah'=>[
+        'fatoorah_token' => env('FATOORAH_TOKEN'),
+        'fatoorah_success' => env('FATOORAH_SUCCESS_URL'),
+        'fatoorah_failed' => env('FATOORAH_FAILED_URL'),
+        'fatoorah_base' => env('FATOORAH_BASE_URL'),
+    ]
+
 
 ];

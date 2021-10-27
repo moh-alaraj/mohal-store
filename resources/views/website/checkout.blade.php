@@ -8,6 +8,11 @@
                 {{session()->get('error')}}
             </div>
         @endif
+            @if(session()->has('status'))
+                <div class="alert alert-success">
+                    {{session()->get('status')}}
+                </div>
+            @endif
         <div class="ps-checkout pt-80 pb-80">
             <div class="ps-container">
                 <form class="ps-checkout__form" action="{{route('checkout')}}" method="post">
@@ -84,7 +89,7 @@
                                         @foreach($cart as $item)
                                         <tr>
                                             <td>{{$item->product->name}} x{{$item->quantity}}</td>
-                                            <td>{{$item->total}} $</td>
+                                            <td>{{$item->product->sale_price * $item->quantity}}  $</td>
                                         </tr>
                                         @endforeach
                                         <tr>
@@ -98,28 +103,23 @@
                                     <h3>Payment Method</h3>
                                     <div class="form-group cheque">
                                         <div class="ps-radio">
-                                            <input class="form-control" type="radio" id="rdo01" name="payment" checked>
-                                            <label for="rdo01">Cheque Payment</label>
+                                            <input class="form-control" type="radio" id="rdo01" name="payment"  value="payment" checked>
+                                            <label for="rdo01">My Fatoorah</label>
                                             <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
                                         </div>
                                     </div>
                                     <div class="form-group paypal">
                                         <div class="ps-radio ps-radio--inline">
-                                            <input class="form-control" type="radio" name="payment" id="rdo02">
+                                            <input class="form-control" type="radio" name="payment"  value="paypal" id="rdo02">
                                             <label for="rdo02">Paypal</label>
                                         </div>
-                                        <ul class="ps-payment-method">
-                                            <li><a href="#"><img src="{{asset('website/images/payment/1.png')}}" alt=""></a></li>
-                                            <li><a href="#"><img src="{{asset('website/images/payment/2.png')}}" alt=""></a></li>
-                                            <li><a href="#"><img src="{{asset('website/images/payment/3.png')}}" alt=""></a></li>
-                                        </ul>
                                         <button class="ps-btn ps-btn--fullwidth" type="submit">Place Order<i class="ps-icon-next"></i></button>
                                     </div>
                                 </footer>
                             </div>
                             <div class="ps-shipping">
                                 <h3>FREE SHIPPING</h3>
-                                <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="#"> Singup </a> for free shipping on every order, every time.</p>
+                                <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="{{route('website.register')}}"> Singup </a> for free shipping on every order, every time.</p>
                             </div>
                         </div>
                     </div>

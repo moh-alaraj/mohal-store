@@ -21,9 +21,8 @@ class CartController extends Controller
             ->get();
 
         $total = $cart->sum(function ($item){
-            return $item->product->price * $item->quantity;
+            return $item->product->sale_price * $item->quantity;
         });
-
 
 
          return view('website.cart',[

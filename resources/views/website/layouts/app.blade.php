@@ -6,8 +6,7 @@
 
 <body>
 
-    @section('main-content')
-    @show
+ @yield('main-content')
 
 </body>
 

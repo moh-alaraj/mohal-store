@@ -15,35 +15,35 @@ use Illuminate\Support\Str;
 class ProductsController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
         $this->authorize('view-any',Product::class);
-//        $products = Product::when($request->name, function($query, $value) {
-//            $query->where(function($query) use ($value) {
-//                $query->where('products.name', 'LIKE', "%{$value}%")
-//                    ->orWhere('products.description', 'LIKE', "%{$value}%");
-//            });
-//        })
-//            ->when($request->product_id, function($query, $value) {
-//                $query->where('product_id', '=', $value);
-//            })
-//            ->with('product')
-//            ->get();
-//
-//        $names = [];
-//        $data = [];
-//        foreach ($products as $product) {
-//            if (in_array($product->name, $names)) {
-//                continue;
-//            }
-//            $data[] = $product;
-//            $names[] = $product->name;
-//        }
-
-        $products = Product::with('category')
-            ->latest()
+        $products = Product::when($request->name, function($query, $value) {
+                $query->where('products.name', 'LIKE', "%{$value}%");
+            })
+            ->when($request->category_id, function($query, $value) {
+                $query->where('category_id', '=', $value);
+            })
+            ->with('category')
             ->orderBy('name', 'asc')
             ->paginate(5);
+        $products = $products->appends(request()->all());
+
+        $names = [];
+        $data = [];
+        foreach ($products as $product) {
+            if (in_array($product->name, $names)) {
+                continue;
+            }
+            $data[] = $product;
+            $names[] = $product->name;
+        }
+
+//        $products = Product::with('category')
+//            ->latest()
+//            ->orderBy('name', 'asc')
+//            ->paginate(5);
+
         return view('admin.products.index', [
             'products' => $products,
             'categories' => Category::all(),

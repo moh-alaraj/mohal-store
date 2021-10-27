@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Cart;
 use Illuminate\Support\Facades\Cookie;
+use View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 
@@ -15,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 
     /**
@@ -35,5 +37,10 @@ class AppServiceProvider extends ServiceProvider
             return $id;
 
         });
+
+         $carts = Cart::limit(5)->get();
+        View::share('carts', $carts);
+
+
     }
 }

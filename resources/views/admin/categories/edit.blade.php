@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <form action="{{ route('admin.categories.update', $id) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.categories.update', $category->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
 

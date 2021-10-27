@@ -49,6 +49,7 @@ class AdvertisesController extends Controller
     public function edit($id)
     {
         $ads = Advertise::findOrFail($id);
+
         return view('admin.advertises.edit',compact('ads'));
     }
 
