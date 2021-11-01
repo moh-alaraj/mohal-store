@@ -9,6 +9,11 @@
             {{session()->get('status')}}
         </div>
     @endif
+        @if(session()->has('danger'))
+            <div class="alert alert-danger">
+                {{session()->get('danger')}}
+            </div>
+        @endif
     <div class="ps-banner">
         <div class="rev_slider fullscreenbanner" id="home-banner">
             <ul>
@@ -44,7 +49,6 @@
                 <ul class="ps-masonry__filter">
 
                     <li class="current"><a href="#" data-filter="*">All <sup>{{count($products)}}</sup></a></li>
-
                     @foreach($categories as $category)
                     <li>
                         <a class="active show" href="#" data-filter=".{{$category->slug}}">{{$category->name}} <sup>{{$category->products->count()}}</sup></a>

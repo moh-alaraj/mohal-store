@@ -16,12 +16,11 @@ class HomeController extends Controller
 
 
 
-
         return view('website.index',[
             'categories' => Category::whereHas('products')->get(),
             'products'   => Product::all(),
             'ads'        => Advertise::inRandomOrder()->limit(2)->get(),
-            't_sales'    => Product::OrderBy('sales', 'desc')->limit(5)->get()
+            't_sales'    => Product::OrderBy('sales', 'desc')->limit(5)->get(),
         ]);
 
     }

@@ -38,7 +38,15 @@ return [
         'fatoorah_success' => env('FATOORAH_SUCCESS_URL'),
         'fatoorah_failed' => env('FATOORAH_FAILED_URL'),
         'fatoorah_base' => env('FATOORAH_BASE_URL'),
-    ]
+    ],
+    'coingate'=>[
+        'coin_token' => env('COINGATE_TOKEN'),
+        'coin_callback' => env('COINGATE_CALLBACK_URL'),
+        'coin_success' => env('COINGATE_SUCCESS_URL'),
+        'coin_base' => env('COINGATE_BASE_URL'),
+        'coin_cancel' => env('COINGATE_CANCEL')
+        ],
+
 
 
 ];

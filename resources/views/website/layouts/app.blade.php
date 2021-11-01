@@ -2,6 +2,8 @@
 <html lang="en">
 
 @include('website.layouts.head')
+
+
 @include('website.layouts.header')
 
 <body>

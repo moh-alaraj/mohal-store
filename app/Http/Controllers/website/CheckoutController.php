@@ -85,8 +85,10 @@ class CheckoutController extends Controller
             $user->notify(new NewOrderCreatedNotification($order));
             if ($request->payment == 'paypal'){
             return redirect("/payments/$order->id");
-            }else{
+            }elseif($request->payment == 'fatoorah'){
                 return redirect("/pay/$order->id");
+            }else{
+                return redirect("coin/$order->id");
             }
         }catch (\Throwable $ex){
             DB::rollBack();

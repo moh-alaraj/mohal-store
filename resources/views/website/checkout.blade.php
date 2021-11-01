@@ -1,5 +1,8 @@
 @extends('website.layouts.app')
+@section('css')
 
+
+@endsection
 @section('main-content')
 
     <main class="ps-main">
@@ -103,9 +106,16 @@
                                     <h3>Payment Method</h3>
                                     <div class="form-group cheque">
                                         <div class="ps-radio">
-                                            <input class="form-control" type="radio" id="rdo01" name="payment"  value="payment" checked>
+                                            <input class="form-control" type="radio" id="rdo01" name="payment"  value="fatoorah">
                                             <label for="rdo01">My Fatoorah</label>
-                                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                            <p> Benfit, Knet , Amex , Sadad , STC Pay , Visa , Mastercard , Mada </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group cheque" style="border-top: none">
+                                        <div class="ps-radio">
+                                            <input class="form-control" type="radio" id="rdo03" name="payment"  value="coin">
+                                            <label for="rdo03"> Cryptocurrency</label>
+                                            <p> pay using crypto: BTC, LTC, ETH </p>
                                         </div>
                                     </div>
                                     <div class="form-group paypal">

@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\CoinController;
 use App\Http\Controllers\website\HomeController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\website\ProductController;
@@ -60,10 +61,14 @@ Route::any('payments/paypal/cancel',[PaymentsController::class,'cancel'])->name(
 
 Route::get('pay/{order}', [FatoorahController::class,'payorder'])->name('fatoorah.create');
 Route::get('pay/callback/{order_id}', [FatoorahController::class,'callBack'])->name('fatoorah.callback');
-
-
-
 //Route::get('pay/cancel', [FatoorahController::class,'cancel'])->name('fatoorah.cancel');
+
+
+Route::get('coin/{order}', [CoinController::class,'pay'])->name('coingate.create');
+Route::get('coin/success/{order_id}', [CoinController::class,'callBack'])->name('coingate.success');
+Route::get('coin/cancel/{order_id}', [CoinController::class,'cancel'])->name('coingate.cancel');
+
+
 
 
 
