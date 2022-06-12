@@ -115,6 +115,10 @@
       <path value="$PROJECT_DIR$/vendor/paypal/paypalhttp" />
       <path value="$PROJECT_DIR$/vendor/paypal/paypal-checkout-sdk" />
       <path value="$PROJECT_DIR$/vendor/laravel/sanctum" />
+      <path value="$PROJECT_DIR$/vendor/moneyphp/money" />
+      <path value="$PROJECT_DIR$/vendor/spatie/url" />
+      <path value="$PROJECT_DIR$/vendor/spatie/macroable" />
+      <path value="$PROJECT_DIR$/vendor/laravel/cashier-paddle" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

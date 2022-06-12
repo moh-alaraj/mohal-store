@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Models\Cart;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
-use View;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 
@@ -38,8 +40,24 @@ class AppServiceProvider extends ServiceProvider
 
         });
 
-         $carts = Cart::limit(5)->get();
-        View::share('carts', $carts);
+        if (Auth::check()){
+            $user = Auth::user();
+            $re_date= clone $user->created_at;
+
+            $ex_date = (clone $re_date)->addYear();
+
+            $time = Carbon::now();
+
+            $remain = $ex_date->diff($time)->days . " " . "يوم";
+
+        }else
+            $remain = null;
+
+        View::share('remain', $remain);
+
+
+        $carts = Cart::limit(5)->get();
+         View::share('carts', $carts);
 
 
     }

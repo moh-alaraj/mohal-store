@@ -19,6 +19,8 @@ use Psy\Exception\ThrowUpException;
 class CheckoutController extends Controller
 {
     public function index(Request $request){
+
+
         $cart = Cart::with('product')
             ->where('cart_id',App::make('cart.id'))
             ->get();
@@ -87,8 +89,12 @@ class CheckoutController extends Controller
             return redirect("/payments/$order->id");
             }elseif($request->payment == 'fatoorah'){
                 return redirect("/pay/$order->id");
-            }else{
+            }elseif($request->payment == 'paymob'){
+                return redirect("/paymob/$order->id");
+            }elseif($request->payment == 'coin'){
                 return redirect("coin/$order->id");
+            }else{
+                return redirect(route('paytab.create',$order->id));
             }
         }catch (\Throwable $ex){
             DB::rollBack();

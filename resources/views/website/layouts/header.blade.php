@@ -4,10 +4,20 @@
     <div class="header__top">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12 ">
-                    <p>Palestine Gaza</p>
+                <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12">
+                    @auth
+                    <p>
+                        <h5>
+                            {{ "باقي على اشتراكك :" ." "}}
+                            <strong>{{$remain}}</strong>
+                        </h5>
+                    </p>
+                    @else
+                    <p>
+                        Palestine, Gaza
+                    </p>
+                    @endauth
                 </div>
-                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 ">
                     <div class="header__actions">
                         @if(\Illuminate\Support\Facades\Auth::check())
                             <div class="btn-group ps-dropdown">
@@ -53,7 +63,7 @@
     <nav class="navigation">
         <div class="container-fluid">
             <div class="navigation__column left">
-                <div class="header__logo"><a class="ps-logo" href="index.html"><img  src="{{asset('website/images/sw.jpg')}}" alt=""></a></div>
+                <div class="header__logo"><a class="ps-logo" href="{{route('website.index')}}"><img  src="{{asset('website/images/dotSTORE.png')}}" alt=""></a></div>
             </div>
             <div class="navigation__column center" style="width: auto">
                 <ul class="main-menu menu">
@@ -97,4 +107,9 @@
         <p class="ps-service"><i class="ps-icon-delivery"></i><strong>Free delivery</strong>: Get free standard delivery on every order with Sky Store</p>
     </div>
 </div>
+
+{{--<div style=" margin: auto;width: 15%;padding: 10px; text-align: center; margin-top: 30px;--}}
+{{--  background-color:#eee; border-radius: 50%;">--}}
+{{--    <h4 style="margin-bottom: 5px">{{ "باقي على اشتراكك :" ." "}}<strong>{{$remain}}</strong></h4>--}}
+{{--</div>--}}
 

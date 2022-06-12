@@ -7,6 +7,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Services\FatoorahServices;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class FatoorahController extends Controller
 {
@@ -24,7 +25,7 @@ class FatoorahController extends Controller
 
         $fatoorah = config('services.fatoorah');
 
-    $data = [
+        $data = [
         'CustomerName'     => $order->first_name . $order->last_name,
         'CustomerMobile'     => $order->phone_number,
         'CustomerEmail'      => $order->email,

@@ -122,6 +122,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/paypal/paypalhttp" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/paypal/paypal-checkout-sdk" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/sanctum" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/moneyphp/money" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/url" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/macroable" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/cashier-paddle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

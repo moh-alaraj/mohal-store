@@ -16,6 +16,7 @@
                     {{session()->get('status')}}
                 </div>
             @endif
+
         <div class="ps-checkout pt-80 pb-80">
             <div class="ps-container">
                 <form class="ps-checkout__form" action="{{route('checkout')}}" method="post">
@@ -111,6 +112,19 @@
                                             <p> Benfit, Knet , Amex , Sadad , STC Pay , Visa , Mastercard , Mada </p>
                                         </div>
                                     </div>
+                                    <div class="form-group cheque" style = "border-top: none">
+                                        <div class="ps-radio">
+                                            <input class="form-control" type="radio" id="rdo05" name="payment"  value="paytab">
+                                            <label for="rdo05">Paytab</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group cheque" style="border-top: none">
+                                        <div class="ps-radio">
+                                            <input class="form-control" type="radio" id="rdo02" name="payment"  value="paymob">
+                                            <label for="rdo02">Paymob</label>
+                                            <p> Card, wallet, kiosk, etc... </p>
+                                        </div>
+                                    </div>
                                     <div class="form-group cheque" style="border-top: none">
                                         <div class="ps-radio">
                                             <input class="form-control" type="radio" id="rdo03" name="payment"  value="coin">
@@ -120,17 +134,49 @@
                                     </div>
                                     <div class="form-group paypal">
                                         <div class="ps-radio ps-radio--inline">
-                                            <input class="form-control" type="radio" name="payment"  value="paypal" id="rdo02">
-                                            <label for="rdo02">Paypal</label>
+                                            <input class="form-control" type="radio" name="payment"  value="paypal" id="rdo04">
+                                            <label for="rdo04">Paypal</label>
                                         </div>
                                         <button class="ps-btn ps-btn--fullwidth" type="submit">Place Order<i class="ps-icon-next"></i></button>
                                     </div>
                                 </footer>
                             </div>
-                            <div class="ps-shipping">
-                                <h3>FREE SHIPPING</h3>
-                                <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="{{route('website.register')}}"> Singup </a> for free shipping on every order, every time.</p>
-                            </div>
+{{--                            <div class="ps-shipping">--}}
+{{--                                <h3>FREE SHIPPING</h3>--}}
+{{--                                <p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="{{route('website.register')}}"> Singup </a> for free shipping on every order, every time.</p>--}}
+{{--                            </div>--}}
+                            <script src="https://www.paypal.com/sdk/js?client-id=AbJs6vCJ16igccGzlm9UCt5NJzVe1KkWbYa8VB_-XuXonmUL_2QNIW4VaFdF4esfAuIEweli58ys_6dG&currency=USD"></script>
+                            <!-- Set up a container element for the button -->
+                            <div id="paypal-button-container"></div>
+                            <script>
+                                paypal.Buttons({
+
+                                    // Sets up the transaction when a payment button is clicked
+                                    createOrder: (data, actions) => {
+                                        return actions.order.create({
+
+                                            purchase_units: [{
+                                                amount: {
+                                                    value: @json($total)   // Can also reference a variable or function
+                                                }
+                                            }]
+                                        });
+                                    },
+                                    // Finalize the transaction after payer approval
+                                    onApprove: (data, actions) => {
+                                        return actions.order.capture().then(function(orderData) {
+                                            // Successful capture! For dev/demo purposes:
+                                            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                            const transaction = orderData.purchase_units[0].payments.captures[0];
+                                            alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                                            // When ready to go live, remove the alert and show a success message within this page. For example:
+                                            // const element = document.getElementById('paypal-button-container');
+                                            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                                            // Or go to another URL:  actions.redirect('thank_you.html');
+                                        });
+                                    }
+                                }).render('#paypal-button-container');
+                            </script>
                         </div>
                     </div>
                 </form>

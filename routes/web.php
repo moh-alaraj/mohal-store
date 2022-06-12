@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\CoinController;
 use App\Http\Controllers\website\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,10 @@ use \App\Http\Controllers\PaymentsController;
 use \App\Http\Controllers\FatoorahController;
 use \App\Http\Controllers\admin\NotificationController;
 use \App\Http\Controllers\admin\OrderController;
+use \App\Http\Controllers\PaddleController;
+use \App\Http\Controllers\PaymobController;
+use \App\Http\Controllers\PaytabsController;
+use \App\Http\Controllers\MoyasserController;
 
 
 
@@ -28,9 +33,7 @@ use \App\Http\Controllers\admin\OrderController;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})
+Route::get('/dashboard',[DashboardController::class,'orders'])
     ->middleware(['auth','verified'])
     ->name('dashboard');
 
@@ -56,6 +59,8 @@ Route::get('/categories/{slug}',[HomeController::class,'show'])->name('website.c
 
 
 Route::get('payments/{order}',[PaymentsController::class,'create'])->name('paypal.create');
+//Route::get('payments/{order}',[\App\Http\Controllers\PaypalController::class,'Pay'])->name('paypal.create');
+
 Route::any('payments/paypal/callback',[PaymentsController::class,'callback'])->name('paypal.callback');
 Route::any('payments/paypal/cancel',[PaymentsController::class,'cancel'])->name('paypal.cancel');
 
@@ -67,6 +72,27 @@ Route::get('pay/callback/{order_id}', [FatoorahController::class,'callBack'])->n
 Route::get('coin/{order}', [CoinController::class,'pay'])->name('coingate.create');
 Route::get('coin/success/{order_id}', [CoinController::class,'callBack'])->name('coingate.success');
 Route::get('coin/cancel/{order_id}', [CoinController::class,'cancel'])->name('coingate.cancel');
+
+Route::get('paddle', [PaddleController::class,'pay'])->name('paddle.create');
+Route::get('paddle/success/{order_id}', [PaddleController::class,'callBack'])->name('paddle.success');
+Route::get('paddle/cancel/{order_id}', [PaddleController::class,'cancel'])->name('paddle.cancel');
+
+
+Route::get('paymob/{order}', [PaymobController::class,'pay'])->name('paymob.create');
+Route::get('paymob/callback/{order_id}', [PaymobController::class,'callBack'])->name('paymob.callback');
+
+Route::get('paytab/{order}', [PaytabsController::class,'pay'])->name('paytab.create');
+Route::get('paytab/callback/{order_id}', [PaytabsController::class,'callBack'])->name('paytab.callback');
+Route::get('paytab/cancel/{order_id}', [PaytabsController::class,'Cancel'])->name('paytab.cancel');
+
+
+Route::get('moyasser', [MoyasserController::class,'pay'])->name('moyasser.create');
+
+
+
+
+
+
 
 
 

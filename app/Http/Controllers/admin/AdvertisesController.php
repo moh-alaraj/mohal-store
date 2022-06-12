@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Advertise;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class AdvertisesController extends Controller
@@ -89,5 +90,8 @@ class AdvertisesController extends Controller
         }
 
         return redirect(route('admin.advertise.index'))
-            ->with('danger','Advertise deleted successfully');    }
+            ->with('danger','Advertise deleted successfully');
+    }
+
+
 }

@@ -46,6 +46,11 @@ return [
         'coin_base' => env('COINGATE_BASE_URL'),
         'coin_cancel' => env('COINGATE_CANCEL')
         ],
+    'paytab' => [
+        'paytab_token'    =>    env('PAYTAB_TOKEN'),
+        'paytab_callback' =>    env('PAYTAB_CALLBACK_URL'),
+        'paytab_cancel'   =>    env('PAYTAB_CANCEL_URL')
+    ],
 
 
 
