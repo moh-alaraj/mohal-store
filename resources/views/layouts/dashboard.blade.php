@@ -358,18 +358,20 @@
         <h2>  @yield('title', 'default')</h2>
 
         <!-- Content Header (Page header) -->
+
+
         @yield('content')
         <!-- /.content -->
         </div>
     </div>
     <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-        All rights reserved.
-        <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.1.0
-        </div>
-    </footer>
+{{--    <footer class="main-footer">--}}
+{{--        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>--}}
+{{--        All rights reserved.--}}
+{{--        <div class="float-right d-none d-sm-inline-block">--}}
+{{--            <b>Version</b> 3.1.0--}}
+{{--        </div>--}}
+{{--    </footer>--}}
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -413,5 +415,30 @@
 <script src="{{asset('dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+
+<script>
+
+    window.UserId = {{\Illuminate\Support\Facades\Auth::id()}}
+</script>
+<script src="{{asset('js/app.js')}}"></script>
+
+
+
+{{--<script src="https://js.pusher.com/7.1/pusher.min.js"></script>--}}
+{{--<script>--}}
+
+{{--    // Enable pusher logging - don't include this in production--}}
+{{--    Pusher.logToConsole = true;--}}
+
+{{--    var pusher = new Pusher('5929d58bbbe212f780dc', {--}}
+{{--        cluster: 'ap2',--}}
+{{--        authEndpoint : '/broadcasting/auth'--}}
+{{--    });--}}
+
+{{--    var channel = pusher.subscribe("private-App.Models.User.{{\Illuminate\Support\Facades\Auth::id()}}");--}}
+{{--    channel.bind("Illuminate\\Notifications\\Events\\BroadcastNotificationCreated", function(data) {--}}
+{{--        alert(data.title);--}}
+{{--    });--}}
+{{--</script>--}}
 </body>
 </html>

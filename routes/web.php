@@ -45,7 +45,6 @@ Route::get('/',[HomeController::class,'index'])->name('website.index');
 Route::get('/products/{slug}',[ProductController::class,'show'])->name('website.show');
 
 
-
 Route::get('cart',[CartController::class,'index'])->name('cart');
 Route::post('cart',[CartController::class,'store']);
 

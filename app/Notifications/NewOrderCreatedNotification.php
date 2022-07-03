@@ -71,6 +71,11 @@ class NewOrderCreatedNotification extends Notification
 
         ];
     }
+//    public function toNexmo($notifiable)
+//    {
+//        return (new NexmoMessage())
+//            ->content('Your SMS message content');
+//    }
 
     /**
      * Get the array representation of the notification.

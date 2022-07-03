@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\MaxMind;
 use App\Models\Advertise;
 use App\Models\Cart;
 use App\Models\Category;
@@ -15,7 +16,6 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index(){
-
 
         if (Auth::check()){
         $user = Auth::user();

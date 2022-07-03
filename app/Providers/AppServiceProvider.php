@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Services\MaxMind;
 use App\Models\Cart;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -58,6 +59,7 @@ class AppServiceProvider extends ServiceProvider
 
         $carts = Cart::limit(5)->get();
          View::share('carts', $carts);
+
 
 
     }

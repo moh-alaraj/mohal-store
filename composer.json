@@ -9,13 +9,18 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.7",
         "laravel/cashier-paddle": "^1.4",
         "laravel/framework": "^8.12",
+        "laravel/nexmo-notification-channel": "^3.0",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "laravel/vonage-notification-channel": "^3.0",
+        "nexmo/laravel": "^3.0",
         "paypal/paypal-checkout-sdk": "^1.0",
         "pusher/pusher-php-server": "^7.0",
-        "symfony/intl": "^5.3"
+        "symfony/intl": "^5.3",
+        "vonage/client": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -28,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
+            "App\\": "App/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

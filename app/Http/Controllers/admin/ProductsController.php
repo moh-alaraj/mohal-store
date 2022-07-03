@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Intervention\Image\Image;
 
 class ProductsController extends Controller
 {
@@ -53,6 +54,7 @@ class ProductsController extends Controller
 
     public function create()
     {
+
         $this->authorize('create',Product::class);
 
         return view('admin.products.create', [
@@ -175,6 +177,16 @@ class ProductsController extends Controller
         if ($request->hasFile('image')) {
             $fileName = $request->image->move(public_path('images'), str_replace(' ', '', $request->image->getClientOriginalName()));
             $data['image'] = $fileName->getBasename();
+
+            $destinationPath = public_path('images');
+            $img = \Intervention\Image\Facades\Image::make($fileName->getRealPath());
+            $img->resize(200,200, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$data['image']);
+
+             $destinationPath = public_path('images');
+            $fileName->move($destinationPath, $data['image']);
+
 
             $previous = $products->image;
 

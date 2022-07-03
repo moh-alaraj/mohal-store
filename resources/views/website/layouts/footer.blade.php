@@ -97,7 +97,6 @@
         </div>
     </div>
 </div>
-
 <script type="text/javascript" src="{{asset('website/plugins/jquery/dist/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('website/plugins/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('website/plugins/jquery-bar-rating/dist/jquery.barrating.min.js')}}"></script>
@@ -122,3 +121,6 @@
 <script type="text/javascript" src="{{asset('website/plugins/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
 <!-- Custom scripts-->
 <script type="text/javascript" src="{{asset('website/js/main.js')}}"></script>
+
+
+

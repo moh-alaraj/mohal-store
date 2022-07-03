@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('website/plugins/revolution/css/navigation.css')}}">
     <link rel="stylesheet" href="{{asset('website/css/style.css')}}">
 
+
     @paddleJS
 
 </head>

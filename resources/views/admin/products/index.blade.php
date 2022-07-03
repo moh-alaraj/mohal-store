@@ -29,8 +29,8 @@
                     <th>Category Name</th>
                     <th>Store Name</th>
 {{--                    <th>Description</th>--}}
-                    <th>Price</th>
                     <th>Image</th>
+                    <th>Price</th>
                     <th>Sale Price</th>
                     <th>Quantity</th>
                     <th>Statues</th>
@@ -47,8 +47,8 @@
                     <td>{{$product->category->name}}</td>
                     <td>{{$product->store->name}}</td>
 {{--                    <td>{{$product->description}}</td>--}}
-                    <td>{{$product->price}}</td>
                     <td><img height="150" width="150" src="{{$product->image_link}}" alt=""></td>
+                    <td>{{$product->price}}</td>
                     <td>{{$product->sale_price}}</td>
                     <td>{{$product->quantity}}</td>
                     <td>{{$product->status}}</td>

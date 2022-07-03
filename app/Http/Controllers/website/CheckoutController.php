@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Vonage;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Order;
@@ -85,6 +86,12 @@ class CheckoutController extends Controller
 
             $user = User::where('type', '=' , 'admin')->first();
             $user->notify(new NewOrderCreatedNotification($order));
+
+            $vonage = new Vonage();
+            $vonage->Send();
+
+
+
             if ($request->payment == 'paypal'){
             return redirect("/payments/$order->id");
             }elseif($request->payment == 'fatoorah'){

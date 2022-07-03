@@ -29,6 +29,9 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'nexmo' => [
+        'sms_from' => '15556666666',
+    ],
     'paypal' => [
         'client_id' => env('PAYPAL_CLIENT_ID'),
         'client_secret' => env('PAYPAL_CLIENT_SECRET'),
@@ -51,6 +54,12 @@ return [
         'paytab_callback' =>    env('PAYTAB_CALLBACK_URL'),
         'paytab_cancel'   =>    env('PAYTAB_CANCEL_URL')
     ],
+    'maxmind' =>[
+        'account_id' => env('MAXMIND_ID'),
+        'key' => env('MAXMIND_KEY')
+
+    ]
+
 
 
 
